@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.rules.studio.model.decisionservice:Operation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.rules.studio.model.decisionservice="http://com.ibm.rules.studio/model/decisionservice.ecore" xmlns:ilog.rules.studio.model.query.extractor="http://ilog.rules.studio/model/query/extractor.ecore" rulesetName="getState" usingRuleflow="true" ruleflowName="state rule flow" targetRuleProjectName="state-eligibility-rule">
+  <name>getState</name>
+  <uuid>792505d4-e327-4af9-99a3-cf8865c2b237</uuid>
+  <referencedVariables variableName="customer" variableSetName="state variables" direction="IN_OUT">
+    <variableSet href="../../vocabularyf/rules/state%20variables.var#7bfa235a-931d-44f1-a357-415424ac90bc"/>
+  </referencedVariables>
+  <ruleflow href="../../state-eligibility-rule/rules/state%20rule%20flow.rfl#bd0a23f8-aa3c-4314-9d15-0d50810cd9a0"/>
+  <extractor xsi:type="ilog.rules.studio.model.query.extractor:QueryExtractor" name="getState_extractor" validator="Default Validator"/>
+  <targetRuleProject href="../../state-eligibility-rule#f6f81a3f-4f0c-4097-b3c7-c38a816cf2ea"/>
+</com.ibm.rules.studio.model.decisionservice:Operation>

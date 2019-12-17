@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Licensed Materials - Property of IBM                           -->
+<!-- 5725-B69 5655-Y17 5724-Y00 5724-Y17 5655-V84                                     -->
+<!-- Copyright IBM Corp. 1987, 2014. All Rights Reserved            -->
+<!-- US Government Users Restricted Rights - Use, duplication or    -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with        -->
+<!-- IBM Corp.                                                      -->
+
+
+<project name="How to Publish a Custom Value Editor in Decision Center Business Console" default="build" basedir=".">
+
+  <description>How to publish a custom value editor in Decision Center Business Console</description>
+
+  <property name="dc.home" location="${basedir}/../../.." />
+  <property name="teamserver.home" value="${dc.home}/teamserver"/>
+  <property name="odm.wlp.scripts.dir" value="${dc.home}/shared/samplesServer/wlp" />
+  <import file="${odm.wlp.scripts.dir}/build.xml"/>
+  <property name="server.url" value="http://localhost:${server.port}/teamserver" />
+  <import file="${teamserver.home}/lib/classpath-teamserver.xml"/>
+  <import file="${teamserver.home}/bin/build.xml"/>
+ 
+  <property name="src.dir" location="src"/>
+  <property name="data.dir" location="data"/>
+  <property name="js.dir" location="js"/>
+  <property name="build.dir" location="build"/>
+  <property name="webresources.dir" location="${build.dir}/webresources"/>
+  <property name="classes.dir" location="${build.dir}/classes"/>
+  <property name="teamserver.sample.dir" value="${teamserver.home}/applicationservers/sample" /> 
+  <path id="build.path">
+    <path refid="teamserver.classpath"/>
+	<fileset dir="${teamserver.home}/lib/">
+		<include name="json4j-*.jar"/>
+	</fileset>
+	<fileset dir="${wlp.home}/dev/api/spec/">
+		<include name="com.ibm.*.javaee.servlet.3.*.jar"/>
+	</fileset>
+  </path> 
+
+  <!-- C L E A N -->
+  <target name="clean" description="Clean the built files" >
+    <delete dir="${build.dir}" />
+  </target>
+
+  <!-- B U I L D -->
+  <target name="build" description="Compile the classes for the value editor" depends="clean" >
+    <mkdir dir="${classes.dir}"/>
+    <javac includeantruntime="false" srcdir="${src.dir}" destdir="${classes.dir}" nowarn="true" source="1.7" target="1.7" classpathref="build.path" debug="true" fork="true" />
+    <mkdir dir="${build.dir}/lib" />
+    <jar destfile="${build.dir}/lib/servervalueeditor.jar" basedir="${classes.dir}" excludes="**/*Translator.class"/>
+    <jar destfile="${build.dir}/lib/servervaluetranslator.jar" basedir="${classes.dir}" includes="**/*Translator.class"/>
+  </target>
+
+  <!-- R E P A C K A G E - W A R  -->
+	<target name="repack" depends="build" description="Rebuild WARs corresponding to the new application">
+		<echo>Repackaging of the application...</echo>
+		<antcall target="getDescriptor" />
+		<mkdir dir="${webresources.dir}/" />
+		<mkdir dir="${webresources.dir}/skins/classic/css" />
+		<unzip src="${teamserver.sample.dir}/teamserver.war" dest="${webresources.dir}">
+			<patternset>
+				<include name="skins/classic/css/main.css" />
+			</patternset>
+		</unzip>
+		<concat destfile="${webresources.dir}/skins/classic/css/main.css" append="true">
+        .filterItems {
+         width: 340px;
+        }
+        </concat>
+		<mkdir dir="${webresources.dir}/skins/mozilla/css" />
+		<unzip src="${teamserver.sample.dir}/teamserver.war" dest="${webresources.dir}">
+			<patternset>
+				<include name="skins/mozilla/css/main.css" />
+			</patternset>
+		</unzip>
+		<concat destfile="${webresources.dir}/skins/mozilla/css/main.css" append="true">
+            .filterItems {
+             width: 340px;
+            }
+    	</concat>
+		<mkdir dir="${webresources.dir}/WEB-INF/lib" />
+		<copy file="${build.dir}/lib/servervalueeditor.jar" todir="${webresources.dir}/WEB-INF/lib" />
+		<mkdir dir="${webresources.dir}/js/custom/valueeditors" />
+		<copy file="${js.dir}/OfferValueEditor.js" todir="${webresources.dir}/js/custom/valueeditors" />
+		<mkdir dir="${webresources.dir}/WEB-INF" />
+		<copy file="${teamserver.sample.dir}/teamserver.war" todir="${build.dir}" />
+		<copy file="${teamserver.sample.dir}/decisioncenter.war" todir="${build.dir}" />
+		<!-- repack for BC  -->
+		<copy file="${build.dir}/sourceBCWar/WEB-INF/web.xml" todir="${webresources.dir}/WEB-INF" />
+		<repackage-war 
+			sourceWar="${build.dir}/decisioncenter.war" 
+			targetWar="${build.dir}/decisioncenter.war" 
+			additionalJars="${build.dir}/lib/servervaluetranslator.jar" 
+			webResourcesDir="${webresources.dir}">
+		</repackage-war>
+		<!-- repack for EC  -->
+		<copy file="${build.dir}/sourceECWar/WEB-INF/web.xml" todir="${webresources.dir}/WEB-INF" overwrite="true" />
+		<repackage-war 
+			sourceWar="${build.dir}/teamserver.war" 
+			targetWar="${build.dir}/teamserver.war" 
+			additionalJars="${build.dir}/lib/servervaluetranslator.jar" 
+			webResourcesDir="${webresources.dir}">
+		</repackage-war>
+	</target>
+
+	<target name="getDescriptor">
+		<!-- Get the original descriptor -->
+		<mkdir dir="${build.dir}/sourceBCWar" />
+		<mkdir dir="${build.dir}/sourceECWar" />
+		<unzip src="${teamserver.sample.dir}/decisioncenter.war" dest="${build.dir}/sourceBCWar">
+			<patternset>
+				<include name="WEB-INF/web.xml" />
+			</patternset>
+		</unzip>
+		<replace file="${build.dir}/sourceBCWar/WEB-INF/web.xml" summary="true">
+			<replacetoken><![CDATA[<!-- Add your custom servlets here if needed -->]]></replacetoken>
+			<replacevalue>
+				<![CDATA[<!-- Add your custom servlets here if needed -->
+				<servlet>
+					<servlet-name>SampleValueEditorServletName</servlet-name>
+					<servlet-class>businessvalueeditor.SampleValueEditorServlet</servlet-class>
+				</servlet>
+				<servlet-mapping>
+					<servlet-name>SampleValueEditorServletName</servlet-name>
+					<url-pattern>/servlet/SampleValueEditorServletName</url-pattern>
+				</servlet-mapping>
+				<security-constraint>
+					<web-resource-collection>
+						<web-resource-name>Entry points</web-resource-name>
+						<url-pattern>/servlet/SampleValueEditorServletName</url-pattern>
+					</web-resource-collection>
+					<auth-constraint>
+						<role-name>rtsAdministrator</role-name>
+						<role-name>rtsConfigManager</role-name>
+						<role-name>rtsUser</role-name>
+					</auth-constraint>
+				</security-constraint>]]>
+      		</replacevalue>
+		</replace>
+		<unzip src="${teamserver.sample.dir}/teamserver.war" dest="${build.dir}/sourceECWar">
+			<patternset>
+				<include name="WEB-INF/web.xml" />
+			</patternset>
+		</unzip>
+		<replace file="${build.dir}/sourceECWar/WEB-INF/web.xml" summary="true">
+			<replacetoken><![CDATA[<!-- Add your custom servlets here if needed -->]]></replacetoken>
+			<replacevalue>
+				<![CDATA[<!-- Add your custom servlets here if needed -->
+				<servlet>
+					<servlet-name>SampleValueEditorServletName</servlet-name>
+					<servlet-class>businessvalueeditor.SampleValueEditorServlet</servlet-class>
+				</servlet>
+				<servlet-mapping>
+					<servlet-name>SampleValueEditorServletName</servlet-name>
+					<url-pattern>/servlet/SampleValueEditorServletName</url-pattern>
+				</servlet-mapping>
+				<security-constraint>
+					<web-resource-collection>
+						<web-resource-name>Entry points</web-resource-name>
+						<url-pattern>/servlet/SampleValueEditorServletName</url-pattern>
+					</web-resource-collection>
+					<auth-constraint>
+						<role-name>rtsAdministrator</role-name>
+						<role-name>rtsConfigManager</role-name>
+						<role-name>rtsUser</role-name>
+					</auth-constraint>
+				</security-constraint>]]>
+ 	  </replacevalue>
+		</replace>
+	</target>
+
+	<!-- R U N -->
+	<target name="run" description="Set the parameter and deploy the new application" depends="repack,set-config-param,deploy ">
+	</target>
+
+	<!-- S E T - C O N F I G - P A R A M -->
+	<target name="set-config-param" description="Set the decision center and team server property to call the value editor" >
+		<set-config-param key="decisioncenter.web.core.intelliruleEditor.sample.myeditor.editor" value="businessvalueeditor.OfferValueEditorProvider" username="${rtsAdmin.login}" password="${rtsAdmin.password}" serverURL="${server.url}" datasourceName="${db.dataSource}" />
+		<set-config-param key="teamserver.web.intelliruleEditor.sample.myeditor.editor" value="businessvalueeditor.OfferValueEditorProvider" username="${rtsAdmin.login}" password="${rtsAdmin.password}" serverURL="${server.url}" datasourceName="${db.dataSource}" />
+	</target>
+
+	<!-- P R I N T - C O N F I G - P A R A M -->
+	<target name="print-config-param" description="Print the teamserver properties">
+		<print-config-param username="${rtsAdmin.login}" password="${rtsAdmin.password}" serverURL="${server.url}" datasourceName="${db.dataSource}" />
+	</target>
+
+	<!-- D E P L O Y -->
+	<target name="deploy" description="Deploy the custom WAR">
+		<module.deploy path="${build.dir}/teamserver.war"/>		
+		<module.deploy path="${build.dir}/decisioncenter.war"/>		
+		
+		<waitfor maxwait="10" maxwaitunit="minute" checkevery="2" checkeveryunit="second" timeoutproperty="deployment.time.out">
+			<http url="${server.url}/css/IlogStyle.css" />
+		</waitfor>
+		<fail message="Deployment timed out. Check your server status." if="deployment.time.out" />
+		<echo>Application ready. You can now sign in to Decision Center.</echo>
+	</target>
+
+</project>

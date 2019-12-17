@@ -1,0 +1,290 @@
+<b2x:translation xmlns:b2x="http://schemas.ilog.com/JRules/1.3/Translation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.ilog.com/JRules/1.3/Translation ilog/rules/schemas/1_3/b2x.xsd">
+    <id>6da0e34e-de3d-47fa-9d9a-4eaa9eccd9c2</id>
+    <lang>ARL</lang>
+    <class>
+        <businessName>StateTypes</businessName>
+        <executionName>java.lang.String</executionName>
+        <attribute>
+            <name>Alabama</name>
+            <getter language="irl"><![CDATA[
+            return"Alabama";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Alaska</name>
+            <getter language="irl"><![CDATA[
+            return"Alaska";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Arizona</name>
+            <getter language="irl"><![CDATA[
+            return"Arizona";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Arkansas</name>
+            <getter language="irl"><![CDATA[
+            return"Arkansas";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>California</name>
+            <getter language="irl"><![CDATA[
+            return"California";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Colorado</name>
+            <getter language="irl"><![CDATA[
+            return"Colorado";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Connecticut</name>
+            <getter language="irl"><![CDATA[
+            return"Connecticut";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Delaware</name>
+            <getter language="irl"><![CDATA[
+            return"Delaware";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Florida</name>
+            <getter language="irl"><![CDATA[
+            return"Florida";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Georgia</name>
+            <getter language="irl"><![CDATA[
+            return"Georgia";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Hawaii</name>
+            <getter language="irl"><![CDATA[
+            return"Hawaii";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Idaho</name>
+            <getter language="irl"><![CDATA[
+            return"Idaho";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>IllinoisIndiana</name>
+            <getter language="irl"><![CDATA[
+            return"IllinoisIndiana";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Iowa</name>
+            <getter language="irl"><![CDATA[
+            return"Iowa";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Kansas</name>
+            <getter language="irl"><![CDATA[
+            return"Kansas";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Kentucky</name>
+            <getter language="irl"><![CDATA[
+            return"Kentucky";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Louisiana</name>
+            <getter language="irl"><![CDATA[
+            return"Louisiana";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Maine</name>
+            <getter language="irl"><![CDATA[
+            return"Maine";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Maryland</name>
+            <getter language="irl"><![CDATA[
+            return"Maryland";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Massachusetts</name>
+            <getter language="irl"><![CDATA[
+            return"Massachusetts";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Michigan</name>
+            <getter language="irl"><![CDATA[
+            return"Michigan";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Minnesota</name>
+            <getter language="irl"><![CDATA[
+            return"Minnesota";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Mississippi</name>
+            <getter language="irl"><![CDATA[
+            return"Mississippi";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Missouri</name>
+            <getter language="irl"><![CDATA[
+            return"Missouri";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>MontanaNebraska</name>
+            <getter language="irl"><![CDATA[
+            return"MontanaNebraska";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Nevada</name>
+            <getter language="irl"><![CDATA[
+            return"Nevada";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>New_Hampshire</name>
+            <getter language="irl"><![CDATA[
+            return"New_Hampshire";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>New_Jersey</name>
+            <getter language="irl"><![CDATA[
+            return"New_Jersey";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>New_Mexico</name>
+            <getter language="irl"><![CDATA[
+            return"New_Mexico";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>New_York</name>
+            <getter language="irl"><![CDATA[
+            return"New_York";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>North_Carolina</name>
+            <getter language="irl"><![CDATA[
+            return"North_Carolina";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>North_Dakota</name>
+            <getter language="irl"><![CDATA[
+            return"North_Dakota";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Ohio</name>
+            <getter language="irl"><![CDATA[
+            return"Ohio";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Oklahoma</name>
+            <getter language="irl"><![CDATA[
+            return"Oklahoma";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Oregon</name>
+            <getter language="irl"><![CDATA[
+            return"Oregon";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>PennsylvaniaRhode_Island</name>
+            <getter language="irl"><![CDATA[
+            return"PennsylvaniaRhode_Island";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>South_Carolina</name>
+            <getter language="irl"><![CDATA[
+            return"South_Carolina";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>South_Dakota</name>
+            <getter language="irl"><![CDATA[
+            return"South_Dakota";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Tennessee</name>
+            <getter language="irl"><![CDATA[
+            return"Tennessee";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Texas</name>
+            <getter language="irl"><![CDATA[
+            return"Texas";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Utah</name>
+            <getter language="irl"><![CDATA[
+            return"Utah";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Vermont</name>
+            <getter language="irl"><![CDATA[
+            return"Vermont";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Virginia</name>
+            <getter language="irl"><![CDATA[
+            return"Virginia";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Washington</name>
+            <getter language="irl"><![CDATA[
+            return"Washington";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>West_Virginia</name>
+            <getter language="irl"><![CDATA[
+            return"West_Virginia";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Wisconsin</name>
+            <getter language="irl"><![CDATA[
+            return"Wisconsin";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Wyoming</name>
+            <getter language="irl"><![CDATA[
+            return"Wyoming";
+            ]]></getter>
+        </attribute>
+    </class>
+</b2x:translation>

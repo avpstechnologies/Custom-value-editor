@@ -1,0 +1,9 @@
+# Vocabulary Properties
+uuid = 88952a85-619f-4259-9895-a2d2843a6e86
+
+# com.avps.Customer
+com.avps.Customer#concept.label = customer
+com.avps.Customer.licensePlate#phrase.action = set the license plate of {this} to {license plate}
+com.avps.Customer.licensePlate#phrase.navigation = {license plate} of {this}
+com.avps.Customer.state#phrase.action = set the state of {this} to {state}
+com.avps.Customer.state#phrase.navigation = {state} of {this}

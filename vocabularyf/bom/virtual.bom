@@ -1,0 +1,114 @@
+
+property uuid "b3209bfd-6f7e-4d9d-95a4-8a4989d9411e"
+
+public class StateTypes
+        property "com.ibm.rules.domainProvider.msexcel.b2xColumn" "2"
+        property "com.ibm.rules.domainProvider.msexcel.hasHeader" "true"
+        property "com.ibm.rules.domainProvider.msexcel.labelColumn.en" "0"
+        property "com.ibm.rules.domainProvider.msexcel.sheetIndex" "0"
+        property "com.ibm.rules.domainProvider.msexcel.valueColumn" "1"
+        property domainProviderResource "domains.xlsx"
+        property domainValueProviderName "com.ibm.rules.domainProvider.msexcel2007"
+        property valueDescriptor "StateTypes#Decorated(ilog.rules.brl.String)"
+        property valueEditor "sample.myeditor.editor"
+        property valueTranslator "servervalueeditor.FilterValueTranslator"
+{
+    domain 
+    {
+        static Alabama,
+        static Alaska,
+        static Arizona,
+        static Arkansas,
+        static California,
+        static Colorado,
+        static Connecticut,
+        static Delaware,
+        static Florida,
+        static Georgia,
+        static Hawaii,
+        static Idaho,
+        static IllinoisIndiana,
+        static Iowa,
+        static Kansas,
+        static Kentucky,
+        static Louisiana,
+        static Maine,
+        static Maryland,
+        static Massachusetts,
+        static Michigan,
+        static Minnesota,
+        static Mississippi,
+        static Missouri,
+        static MontanaNebraska,
+        static Nevada,
+        static New_Hampshire,
+        static New_Jersey,
+        static New_Mexico,
+        static New_York,
+        static North_Carolina,
+        static North_Dakota,
+        static Ohio,
+        static Oklahoma,
+        static Oregon,
+        static PennsylvaniaRhode_Island,
+        static South_Carolina,
+        static South_Dakota,
+        static Tennessee,
+        static Texas,
+        static Utah,
+        static Vermont,
+        static Virginia,
+        static Washington,
+        static West_Virginia,
+        static Wisconsin,
+        static Wyoming
+    }
+    public static final readonly StateTypes Alabama;
+    public static final readonly StateTypes Alaska;
+    public static final readonly StateTypes Arizona;
+    public static final readonly StateTypes Arkansas;
+    public static final readonly StateTypes California;
+    public static final readonly StateTypes Colorado;
+    public static final readonly StateTypes Connecticut;
+    public static final readonly StateTypes Delaware;
+    public static final readonly StateTypes Florida;
+    public static final readonly StateTypes Georgia;
+    public static final readonly StateTypes Hawaii;
+    public static final readonly StateTypes Idaho;
+    public static final readonly StateTypes IllinoisIndiana;
+    public static final readonly StateTypes Iowa;
+    public static final readonly StateTypes Kansas;
+    public static final readonly StateTypes Kentucky;
+    public static final readonly StateTypes Louisiana;
+    public static final readonly StateTypes Maine;
+    public static final readonly StateTypes Maryland;
+    public static final readonly StateTypes Massachusetts;
+    public static final readonly StateTypes Michigan;
+    public static final readonly StateTypes Minnesota;
+    public static final readonly StateTypes Mississippi;
+    public static final readonly StateTypes Missouri;
+    public static final readonly StateTypes MontanaNebraska;
+    public static final readonly StateTypes Nevada;
+    public static final readonly StateTypes New_Hampshire;
+    public static final readonly StateTypes New_Jersey;
+    public static final readonly StateTypes New_Mexico;
+    public static final readonly StateTypes New_York;
+    public static final readonly StateTypes North_Carolina;
+    public static final readonly StateTypes North_Dakota;
+    public static final readonly StateTypes Ohio;
+    public static final readonly StateTypes Oklahoma;
+    public static final readonly StateTypes Oregon;
+    public static final readonly StateTypes PennsylvaniaRhode_Island;
+    public static final readonly StateTypes South_Carolina;
+    public static final readonly StateTypes South_Dakota;
+    public static final readonly StateTypes Tennessee;
+    public static final readonly StateTypes Texas;
+    public static final readonly StateTypes Utah;
+    public static final readonly StateTypes Vermont;
+    public static final readonly StateTypes Virginia;
+    public static final readonly StateTypes Washington;
+    public static final readonly StateTypes West_Virginia;
+    public static final readonly StateTypes Wisconsin;
+    public static final readonly StateTypes Wyoming;
+}
+

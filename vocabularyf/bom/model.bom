@@ -1,0 +1,23 @@
+
+property loadGetterSetterAsProperties "true"
+property origin "xom:/vocabularyf//Model"
+property uuid "336d6f7f-7725-4f69-9b3d-584004b226cc"
+package com.avps;
+
+
+public class Customer
+        extends java.io.Serializable
+        property "DecoratedValueDescriptor.prefix" "#"
+        property valueDescriptor "com.avps.Customer#Decorated(ilog.rules.brl.String)"
+        property valueEditor "sample.myeditor.editor"
+        property valueTranslator "servervalueeditor.FilterValueTranslator"
+{
+    public string licensePlate;
+    public StateTypes state
+                property "DecoratedValueDescriptor.prefix" "#"
+                property valueDescriptor "com.avps.Customer.state(ilog.rules.brl.String)"
+                property valueEditor "sample.myeditor.editor"
+                property valueTranslator "servervalueeditor.FilterValueTranslator";
+    public Customer();
+}
+
